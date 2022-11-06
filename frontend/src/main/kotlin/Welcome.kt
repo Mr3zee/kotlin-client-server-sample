@@ -1,3 +1,4 @@
+import csstype.NamedColor
 import csstype.px
 import csstype.rgb
 import emotion.react.css
@@ -33,6 +34,35 @@ val Welcome = FC<WelcomeProps> { props ->
         value = name
         onChange = { event ->
             name = event.target.value
+        }
+    }
+
+    var serverGreeting by useState(props.name)
+    div {
+        css {
+            padding = 5.px
+            backgroundColor = rgb(8, 97, 22)
+            color = NamedColor.aqua
+        }
+        +"Greeting from server: $serverGreeting"
+    }
+
+    input {
+        css {
+            marginTop = 5.px
+            marginBottom = 5.px
+            fontSize = 14.px
+        }
+        type = InputType.text
+        value = name
+        onChange = { event ->
+            name = event.target.value
+            sendAsyncApiPostRequest<ClientName, ServerGreeting>(
+                path = "hello",
+                body = ClientName(name)
+            ) {
+                serverGreeting = it.greeting
+            }
         }
     }
 }
