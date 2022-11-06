@@ -5,7 +5,7 @@
       <configuration version="5" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="false" externalProjectId=":frontend" isHmppProject="true">
         <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
         <compilerSettings>
-          <option name="additionalArguments" value="-Xir-module-name=hw4-sd:frontend -Xir-only -Xir-per-module-output-name=hw4-sd-frontend -Xir-produce-klib-dir" />
+          <option name="additionalArguments" value="-Xir-module-name=kotlin-client-server-sample:frontend -Xir-only -Xir-per-module-output-name=kotlin-client-server-sample-frontend -Xir-produce-klib-dir" />
         </compilerSettings>
         <compilerArguments>
           <flagArguments>

@@ -1,24 +1,16 @@
+@Suppress("DSL_SCOPE_VIOLATION") // "libs" produces a false-positive warning, see https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     kotlin("js")
 }
 
 kotlin {
-    js(IR) {
-        binaries.executable()
-        browser {
-            commonWebpackConfig {
-                cssSupport {
-                    enabled = true
-                }
-            }
-        }
-    }
+    useJs()
 }
 
 dependencies {
     implementation(project(":common"))
-    implementation(kotlin("stdlib-js"))
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.346")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.346")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.9.3-pre.346")
+    implementation(libs.kotlin.stdlib.js)
+    implementation(libs.react)
+    implementation(libs.react.dom)
+    implementation(libs.emotion)
 }

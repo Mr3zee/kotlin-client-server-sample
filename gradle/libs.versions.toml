@@ -1,0 +1,22 @@
+[versions]
+kotlin = "1.7.20"
+react = "18.2.0-pre.346"
+emotion = "11.9.3-pre.346"
+ktor = "2.1.3"
+
+
+[libraries]
+# kotlin
+kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-js = { module = "org.jetbrains.kotlin:kotlin-stdlib-js", version.ref = "kotlin" }
+
+# react
+react = { module = "org.jetbrains.kotlin-wrappers:kotlin-react", version.ref = "react" }
+react-dom = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom", version.ref = "react" }
+
+# emotion
+emotion = { module = "org.jetbrains.kotlin-wrappers:kotlin-emotion", version.ref = "emotion" }
+
+# ktor
+ktor-server-cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }

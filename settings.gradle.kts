@@ -1,4 +1,4 @@
-rootProject.name = "hw4-sd"
+rootProject.name = "kotlin-client-server-sample"
 
 include("common", "frontend", "server")
 

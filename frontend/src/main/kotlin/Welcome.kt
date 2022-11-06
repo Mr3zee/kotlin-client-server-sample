@@ -1,13 +1,13 @@
 import csstype.px
 import csstype.rgb
+import emotion.react.css
 import react.FC
 import react.Props
-import emotion.react.css
 import react.dom.html.InputType
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.input
 import react.useState
-import sysoev.sd.mvc.common.SharedType
+
 
 external interface WelcomeProps : Props {
     var name: String

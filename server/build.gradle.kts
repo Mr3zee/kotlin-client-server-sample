@@ -1,6 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION") // "libs" produces a false-positive warning, see https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     kotlin("jvm")
     application
+    distribution
 }
 
 application {
@@ -13,9 +15,7 @@ tasks.test {
 
 dependencies {
     implementation(project(":common"))
-    implementation(kotlin("stdlib"))
-    implementation("io.ktor:ktor-server-cio:2.1.3")
-    implementation("io.ktor:ktor-server-html-builder-jvm:2.1.3")
+    implementation(libs.ktor.server.cio)
 }
 
 tasks.named<Copy>("processResources") {
