@@ -7,6 +7,7 @@ import react.Props
 import react.dom.html.InputType
 import react.dom.html.ReactHTML.div
 import react.dom.html.ReactHTML.input
+import react.dom.html.ReactHTML.p
 import react.useState
 
 
@@ -44,7 +45,12 @@ val Welcome = FC<WelcomeProps> { props ->
             backgroundColor = rgb(8, 97, 22)
             color = NamedColor.aqua
         }
-        +"Greeting from server: $serverGreeting"
+        p {
+            +"Greetings from server: $serverGreeting"
+        }
+        p {
+            +serverGreeting
+        }
     }
 
     input {
@@ -57,11 +63,11 @@ val Welcome = FC<WelcomeProps> { props ->
         value = name
         onChange = { event ->
             name = event.target.value
-            sendAsyncApiPostRequest<ClientName, ServerGreeting>(
+            sendAsyncApiPostRequest(
                 path = "hello",
                 body = ClientName(name)
-            ) {
-                serverGreeting = it.greeting
+            ) { greeting: ServerGreeting ->
+                serverGreeting = greeting.greeting
             }
         }
     }
