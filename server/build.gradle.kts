@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.plugin.serialization)
     application
     distribution
+    id("com.dorongold.task-tree") version "2.1.0"
 }
 
 application {
@@ -26,12 +27,24 @@ dependencies {
     implementation(libs.logback.classic)
 }
 
-tasks.named<Copy>("processResources") {
-    val frontendBrowserDistribution = project(":frontend").tasks.named("browserDistribution")
-    from(frontendBrowserDistribution)
+val buildAndCopyFrontend = tasks.register<Copy>("buildAndCopyFrontend") {
+    val frontendDist = project(":frontend").tasks.named("browserDistribution")
+    dependsOn(frontendDist)
+    from(frontendDist)
+    into("${project.projectDir}/src/main/resources/static")
+}
+
+val prepareAppResources = tasks.register("prepareAppResources") {
+    dependsOn(buildAndCopyFrontend)
+    finalizedBy("processResources")
+}
+
+val buildApp = tasks.register("buildApp") {
+    dependsOn(prepareAppResources)
+    finalizedBy("build")
 }
 
 tasks.named<JavaExec>("run") {
-    dependsOn(tasks.named<Jar>("jar"))
+    dependsOn(buildApp)
     classpath(tasks.named<Jar>("jar"))
 }

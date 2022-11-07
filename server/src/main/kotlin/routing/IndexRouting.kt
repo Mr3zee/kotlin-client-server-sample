@@ -5,7 +5,7 @@ import io.ktor.server.routing.*
 
 fun Routing.indexRouting() {
     static("/") {
-        resources("/")
-        resource("/", "index.html")
+        resources("/static")
+        resource("/", "static/index.html")
     }
 }

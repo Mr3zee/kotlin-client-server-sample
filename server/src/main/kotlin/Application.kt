@@ -22,7 +22,7 @@ fun Application.module() {
     }
 
     install(CallLogging) {
-        level = Level.TRACE
+        level = Level.INFO
         filter { call -> call.request.path().startsWith("/") }
     }
 

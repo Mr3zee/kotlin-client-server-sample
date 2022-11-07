@@ -46,7 +46,7 @@ val Welcome = FC<WelcomeProps> { props ->
             color = NamedColor.aqua
         }
         p {
-            +"Greetings from server: $serverGreeting"
+            +"Greetings from server:"
         }
         p {
             +serverGreeting
@@ -62,10 +62,11 @@ val Welcome = FC<WelcomeProps> { props ->
         type = InputType.text
         value = name
         onChange = { event ->
-            name = event.target.value
+            val new = event.target.value
+            name = new
             sendAsyncApiPostRequest(
                 path = "hello",
-                body = ClientName(name)
+                body = ClientName(new)
             ) { greeting: ServerGreeting ->
                 serverGreeting = greeting.greeting
             }
