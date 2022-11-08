@@ -5,7 +5,15 @@ plugins {
 }
 
 kotlin {
-    useJs()
+    useJs {
+        commonWebpackConfig {
+            cssSupport {
+                enabled = true
+            }
+
+            devServer = devServer?.copy(port = 3000)
+        }
+    }
 }
 
 dependencies {

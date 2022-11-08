@@ -21,6 +21,7 @@ dependencies {
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.core.jvm)
     implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.ktor.server.cors.jvm)
     implementation(libs.ktor.server.call.logging.jvm)
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.kotlinx.coroutines.core.jvm)

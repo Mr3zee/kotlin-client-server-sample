@@ -38,7 +38,8 @@ val Welcome = FC<WelcomeProps> { props ->
         }
     }
 
-    var serverGreeting by useState(props.name)
+    var serverGreeting by useState("")
+
     div {
         css {
             padding = 5.px
@@ -48,8 +49,10 @@ val Welcome = FC<WelcomeProps> { props ->
         p {
             +"Greetings from server:"
         }
-        p {
-            +serverGreeting
+        if (serverGreeting.isNotBlank()) {
+            p {
+                +serverGreeting
+            }
         }
     }
 

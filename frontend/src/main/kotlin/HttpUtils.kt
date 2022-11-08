@@ -1,6 +1,7 @@
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.js.*
+import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -25,6 +26,13 @@ object HttpUtils {
         HttpClient(Js) {
             install(ContentNegotiation) {
                 json()
+            }
+
+            if (isDevEnv()) {
+                defaultRequest {
+                    host = "localhost"
+                    port = 8080
+                }
             }
         }
     }
