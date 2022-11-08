@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.plugin.serialization)
     application
     distribution
-    id("com.dorongold.task-tree") version "2.1.0"
 }
 
 application {
