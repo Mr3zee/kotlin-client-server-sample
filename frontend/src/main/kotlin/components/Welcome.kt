@@ -12,6 +12,7 @@ import react.Props
 import react.dom.html.InputType
 import react.dom.html.ReactHTML.button
 import react.dom.html.ReactHTML.div
+import react.dom.html.ReactHTML.img
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.p
 import react.useState
@@ -29,9 +30,36 @@ val Welcome = FC<WelcomeProps> { props ->
 
     div {
         css {
+            display = Display.flex
+            flexDirection = FlexDirection.row
+            gap = 4.px
+        }
+
+        img {
+            src = "/images/KotlinLogo.png"
+            alt = "Kotlin logo"
+            width = 32.0
+            height = 32.0
+        }
+
+        div {
+            css {
+                fontSize = 32.px
+                lineHeight = 32.px
+            }
+
+            +"Kotlin Client-Server Template"
+        }
+    }
+
+    div {
+        css {
             padding = 5.px
             backgroundColor = NamedColor.orange
+
+            marginTop = 16.px
         }
+
         p {
             +"All registered users:"
         }

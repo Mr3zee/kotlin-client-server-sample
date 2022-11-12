@@ -29,13 +29,6 @@ object HttpUtils {
             install(ContentNegotiation) {
                 json()
             }
-
-            if (isDevEnv()) {
-                defaultRequest {
-                    host = "localhost"
-                    port = 8080
-                }
-            }
         }
     }
 }

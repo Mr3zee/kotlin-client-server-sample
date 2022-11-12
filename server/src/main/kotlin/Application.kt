@@ -16,6 +16,7 @@ import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 import org.slf4j.event.*
 import routing.api.apiRouting
+import routing.images.images
 import routing.indexRouting
 
 
@@ -63,5 +64,6 @@ fun Application.module() {
     routing {
         indexRouting()
         apiRouting()
+        images()
     }
 }
