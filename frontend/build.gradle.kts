@@ -1,20 +1,7 @@
-import org.jetbrains.kotlin.gradle.targets.js.webpack.*
-
 @Suppress("DSL_SCOPE_VIOLATION") // "libs" produces a false-positive warning, see https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     kotlin("js")
     alias(libs.plugins.kotlin.plugin.serialization)
-}
-
-fun KotlinWebpackConfig.DevServer?.proxies() = run {
-    val map = this?.proxy ?: mutableMapOf()
-    listOf(
-        "/api",
-        "/images",
-    ).forEach {
-        map[it] = "http://localhost:8080"
-    }
-    map
 }
 
 kotlin {
@@ -24,9 +11,17 @@ kotlin {
                 enabled = true
             }
 
+            val proxies = devServer?.proxy ?: mutableMapOf()
+            listOf(
+                "/api",
+                "/images",
+            ).forEach {
+                proxies[it] = "http://localhost:8080"
+            }
+
             devServer = devServer?.copy(
                 port = 3000,
-                proxy = devServer.proxies()
+                proxy = proxies
             )
         }
     }
