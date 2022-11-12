@@ -11,9 +11,11 @@ kotlin {
 
 dependencies {
     commonMainApi(libs.kotlin.stdlib)
+    commonMainApi(libs.kotlin.reflect)
     commonMainApi(libs.kotlinx.serialization.json)
     commonMainApi(libs.ktor.client.core)
     commonMainApi(libs.ktor.client.content.negotiation)
     commonMainApi(libs.ktor.serialization.kotlinx.json)
     commonMainApi(libs.kotlinx.coroutines.core)
+    commonMainApi(libs.koin.core)
 }

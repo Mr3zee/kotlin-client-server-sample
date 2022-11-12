@@ -1,5 +1,7 @@
 @file:Suppress("PropertyName")
 
+package utils
+
 external val process: Process
 
 external interface Process {

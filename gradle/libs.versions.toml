@@ -6,6 +6,10 @@ ktor = "2.1.3"
 kotlinx-serialization-json = "1.4.1"
 kotlinx-coroutines-core = "1.6.4"
 logback = "1.4.4"
+exposed = "0.40.1"
+postgresql = "42.5.0"
+koin = "3.2.2"
+koin_ktor = "3.2.2"
 
 
 [libraries]
@@ -13,6 +17,8 @@ logback = "1.4.4"
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-stdlib-js = { module = "org.jetbrains.kotlin:kotlin-stdlib-js", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
 
 # kotlinx
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
@@ -42,6 +48,22 @@ ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negoti
 
 # logback
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+# exposed
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+
+# postgres
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+
+# koin
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koin-test-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin" }
+koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin_ktor" }
+koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin_ktor" }
+
 
 [plugins]
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

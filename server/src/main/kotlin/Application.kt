@@ -1,3 +1,4 @@
+import db.connection.postgres
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -9,6 +10,10 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
+import modules.applicationModules
+import org.koin.environmentProperties
+import org.koin.ktor.plugin.Koin
+import org.koin.logger.slf4jLogger
 import org.slf4j.event.*
 import routing.api.apiRouting
 import routing.indexRouting
@@ -41,19 +46,22 @@ fun Application.module() {
     }
 
     install(CallLogging) {
-        level = Level.INFO
+        level = this@module.loggerLevel
         filter { call -> call.request.path().startsWith("/") }
     }
+
+    install(Koin) {
+        slf4jLogger(this@module.loggerLevel.koinLevel())
+
+        environmentProperties()
+
+        modules(applicationModules)
+    }
+
+    postgres(isDebug = loggerLevel != Level.INFO)
 
     routing {
         indexRouting()
         apiRouting()
     }
-}
-
-
-@Suppress("unused")
-fun Application.isDevEnv(): Boolean {
-    val env = environment.config.propertyOrNull("ktor.environment")?.getString()
-    return env == "development"
 }

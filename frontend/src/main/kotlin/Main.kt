@@ -7,8 +7,6 @@ fun main() {
     val container = document.createElement("div")
     document.body!!.appendChild(container)
 
-    val welcome = Welcome.create {
-        name = "Kotlin/JS"
-    }
-    createRoot(container).render(welcome)
+    val app = App.create()
+    createRoot(container).render(app)
 }
