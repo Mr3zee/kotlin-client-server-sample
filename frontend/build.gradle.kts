@@ -30,6 +30,7 @@ kotlin {
 dependencies {
     implementation(project(":common"))
     implementation(libs.kotlin.stdlib.js)
+    implementation(enforcedPlatform(libs.kotlin.wrappers.bom))
     implementation(libs.react)
     implementation(libs.react.dom)
     implementation(libs.emotion)

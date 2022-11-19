@@ -19,6 +19,8 @@ dependencies {
     implementation(libs.ktor.client.cio)
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.core.jvm)
+    implementation(libs.ktor.server.host.common.jvm)
+    implementation(libs.ktor.server.status.pages.jvm)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.server.cors.jvm)
     implementation(libs.ktor.server.call.logging.jvm)
